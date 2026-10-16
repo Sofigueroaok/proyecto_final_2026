@@ -1,0 +1,9 @@
+// Dependencias
+node_modules/
+
+//Variables y credenciales
+.env
+
+//Archivos temporales y del sistema
+.DS_Store
+.log
