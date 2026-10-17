@@ -5,24 +5,29 @@
   "keywords": [
     "node.js"
   ],
+
   "homepage": "https://github.com/Sofigueroaok/proyecto_final_2026#readme",
   "bugs": {
     "url": "https://github.com/Sofigueroaok/proyecto_final_2026/issues"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Sofigueroaok/proyecto_final_2026.git"
   },
+  
   "license": "ISC",
   "author": "figueroa y garcia",
   "type": "module",
   "main": "index.js",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node app.js"
+    "start": "node --env-file=.env index.js",
+    "dev": "node --watch --env-file=.env index.js"
   },
+
   "dependencies": {
-    "express": "^5.3.0",
-    "mongodb": "^7.7.0"
+    "express": "5.2.1",
+    "mongoose": "9.11.1"
   }
 }
