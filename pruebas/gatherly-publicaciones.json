@@ -1,0 +1,152 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Gatherly: pruebas de publicaciones",
+    "collectionId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+    "dateExported": "2026-10-21T19:34:48.569Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "248f8feb-eaf0-491b-a877-b5e3cb92acd5",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Listar publicaciones",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2026-10-21T19:01:21.541Z",
+            "modified": "2026-10-21T19:01:21.542Z",
+            "headers": []
+        },
+        {
+            "_id": "19a07112-6cb0-469a-bb50-39b14cdc04b1",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Obtener publicacion por id",
+            "url": "http://localhost:3000/api/publicaciones/6ad8bafb188686a7d2a15dc3",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2026-10-21T19:03:48.457Z",
+            "modified": "2026-10-21T19:03:48.457Z",
+            "headers": []
+        },
+        {
+            "_id": "3a6b5b4a-cc68-4cd4-9b0c-6c16b60bd5b8",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Crear publicacion",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2026-10-21T19:08:08.758Z",
+            "modified": "2026-10-21T19:08:08.758Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"CARPA-001\",",
+                    "  \"titulo\": \"Carpa para cuatro personas\",",
+                    "  \"descripcion\": \"Excelente carpa para cuatro personas, lista para tu proximo camping. Impermeable y completa (incluye varillas y estacas). Se entrega limpia en su bolso de transporte.\",",
+                    "  \"categoria\": \"camping\",",
+                    "  \"precioPorDia\": 8500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "b44c3002-2396-416b-9c80-bdc74eff4eb3",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Modificar precio de publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad90e953b61d2b4358c3646",
+            "method": "PATCH",
+            "sortNum": 60000,
+            "created": "2026-10-21T19:15:06.033Z",
+            "modified": "2026-10-21T19:15:06.033Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"precioPorDia\": 9600",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "ca4dc046-445e-4148-b69e-4a9a2376c2d2",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Modificar deposito",
+            "url": "http://localhost:3000/api/publicaciones/6ad90e953b61d2b4358c3646",
+            "method": "PATCH",
+            "sortNum": 70000,
+            "created": "2026-10-21T19:20:13.915Z",
+            "modified": "2026-10-21T19:20:13.915Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"requiereDeposito\": true,",
+                    "  \"deposito\": 2500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "6deb6dd4-e598-4fc0-8730-720f58b31d47",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Crear publicacion para borrar",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2026-10-21T19:23:24.634Z",
+            "modified": "2026-10-21T19:23:24.634Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"BORRAR-002\",",
+                    "  \"titulo\": \"Publicacion para probar metodo delete\",",
+                    "  \"descripcion\": \"Esta publicacion es un ejemplo de prueba para comprobar que si podemos eliminarla.\",",
+                    "  \"categoria\": \"herramientas\",",
+                    "  \"precioPorDia\": 1000",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "185b6f03-4f2c-4c1a-8a2e-03b5b522e472",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Eliminar publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad911963b61d2b4358c3647",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2026-10-21T19:26:02.154Z",
+            "modified": "2026-10-21T19:26:02.155Z",
+            "headers": []
+        },
+        {
+            "_id": "08781baa-66bc-4b32-84c6-087674bc688e",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Estado del servicio",
+            "url": "http://localhost:3000/api/salud",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2026-10-21T19:28:11.494Z",
+            "modified": "2026-10-21T19:28:11.495Z",
+            "headers": []
+        }
+    ],
+    "ref": "EMmahB3aCihN854u0iuSCfE2r4_4FrCbMD6Cu3EFb-vEZJYid-DmQDQGSbiF2nbrAx7jFGBX5AZdThWL5SvsMg"
+}
