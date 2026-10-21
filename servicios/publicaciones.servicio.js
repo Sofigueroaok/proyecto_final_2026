@@ -1,8 +1,29 @@
 import Publicacion from "../modelos/publicacion.js";
 import { ErrorHttp } from "../errores/ErrorHttp.js";
 
-export async function listar() { // function listar es la que busca todas las publicaciones y devuelve el resultado
-    return Publicacion.find();
+export async function listar({ categoria, estado, requiereDeposito } = {}) {
+    
+    const filtro = {}; // condiciones de la busqueda
+
+    if (categoria) {
+        filtro.categoria = categoria;
+    } // si el usuario pido una categoria, busca solo publicaciones de esa categoria
+
+     if (estado) {
+        
+        filtro.estado = estado;
+    } // si pidieron un estado, busca solo eso si esta disponible o alquilado
+
+    if (requiereDeposito === "true") {
+        filtro.requiereDeposito = true;
+    } // si filtraron por deposito busca las que lo requieren
+
+    if (requiereDeposito === "false") {
+        filtro.requiereDeposito = false;
+    } // si filtraron sin deposito busca las que no lo requieren
+
+    // le pide a mongodb las publicaciones que filtramos
+    return Publicacion.find(filtro);
 }
 
 export async function crear(datos) { //recibe los datos, se fija si coinciden con nuestro esquema y guarda la nueva publi en mongo
@@ -39,4 +60,7 @@ export async function eliminar(id) { // busca la publicacion por su id y la borr
     if (!publicacion) {
         throw ErrorHttp.noEncontrado("No existe esa publicación", { id });
     }
+
 }
+
+

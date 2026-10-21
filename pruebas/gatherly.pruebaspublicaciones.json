@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Gatherly: pruebas de publicaciones",
     "collectionId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
-    "dateExported": "2026-10-21T19:34:48.569Z",
+    "dateExported": "2026-10-21T22:49:28.682Z",
     "version": "1.4",
     "folders": [],
     "requests": [
@@ -146,7 +146,112 @@
             "created": "2026-10-21T19:28:11.494Z",
             "modified": "2026-10-21T19:28:11.495Z",
             "headers": []
+        },
+        {
+            "_id": "dafe105d-98ca-4a56-aacb-d4ece38988ff",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar por categoria",
+            "url": "http://localhost:3000/api/publicaciones?categoria=camping",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2026-10-21T22:07:12.165Z",
+            "modified": "2026-10-21T22:07:12.165Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "camping",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "94cf78f7-b03c-47e5-b3ad-ce537b09af7d",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar por estado",
+            "url": "http://localhost:3000/api/publicaciones?estado=disponible",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2026-10-21T22:22:02.868Z",
+            "modified": "2026-10-21T22:22:02.868Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "estado",
+                    "value": "disponible",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "9064ec3d-3a7d-4593-bd29-cf0e677aaf18",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar con deposito",
+            "url": "http://localhost:3000/api/publicaciones?requiereDeposito=true",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2026-10-21T22:44:02.495Z",
+            "modified": "2026-10-21T22:44:02.495Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "requiereDeposito",
+                    "value": "true",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "d001766d-ce24-46e3-996d-af7310d80c49",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar sin deposito",
+            "url": "http://localhost:3000/api/publicaciones?requiereDeposito=false",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2026-10-21T22:45:13.967Z",
+            "modified": "2026-10-21T22:45:13.967Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "requiereDeposito",
+                    "value": "false",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "5360cf17-bda2-4ae7-b64c-0e420f1c2c0b",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtros combinados",
+            "url": "http://localhost:3000/api/publicaciones?categoria=camping&estado=disponible&requiereDeposito=true",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2026-10-21T22:46:43.505Z",
+            "modified": "2026-10-21T22:46:43.505Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "camping",
+                    "isPath": false
+                },
+                {
+                    "name": "estado",
+                    "value": "disponible",
+                    "isPath": false
+                },
+                {
+                    "name": "requiereDeposito",
+                    "value": "true",
+                    "isPath": false
+                }
+            ]
         }
     ],
-    "ref": "EMmahB3aCihN854u0iuSCfE2r4_4FrCbMD6Cu3EFb-vEZJYid-DmQDQGSbiF2nbrAx7jFGBX5AZdThWL5SvsMg"
+    "ref": "EMmahB3aCihN854u0iuSCYZQzS8x49yrDENt9OR4ACXK0MZpOBk5EvkGzQHcNGomkQoKaZXASK9rPKm_3XDzHg"
 }
