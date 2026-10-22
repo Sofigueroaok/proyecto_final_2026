@@ -1,0 +1,269 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Gatherly: pruebas de publicaciones",
+    "collectionId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+    "dateExported": "2026-10-22T00:34:16.423Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "248f8feb-eaf0-491b-a877-b5e3cb92acd5",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Listar publicaciones",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2026-10-21T19:01:21.541Z",
+            "modified": "2026-10-21T19:01:21.542Z",
+            "headers": []
+        },
+        {
+            "_id": "19a07112-6cb0-469a-bb50-39b14cdc04b1",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Obtener publicacion por id",
+            "url": "http://localhost:3000/api/publicaciones/6ad8bafb188686a7d2a15dc3",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2026-10-21T19:03:48.457Z",
+            "modified": "2026-10-21T19:03:48.457Z",
+            "headers": []
+        },
+        {
+            "_id": "3a6b5b4a-cc68-4cd4-9b0c-6c16b60bd5b8",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Crear publicacion",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2026-10-21T19:08:08.758Z",
+            "modified": "2026-10-21T19:08:08.758Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"CARPA-001\",",
+                    "  \"titulo\": \"Carpa para cuatro personas\",",
+                    "  \"descripcion\": \"Excelente carpa para cuatro personas, lista para tu proximo camping. Impermeable y completa (incluye varillas y estacas). Se entrega limpia en su bolso de transporte.\",",
+                    "  \"categoria\": \"camping\",",
+                    "  \"precioPorDia\": 8500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "b44c3002-2396-416b-9c80-bdc74eff4eb3",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Modificar precio de publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad90e953b61d2b4358c3646",
+            "method": "PATCH",
+            "sortNum": 60000,
+            "created": "2026-10-21T19:15:06.033Z",
+            "modified": "2026-10-21T19:15:06.033Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"precioPorDia\": 9600",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "ca4dc046-445e-4148-b69e-4a9a2376c2d2",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Modificar deposito",
+            "url": "http://localhost:3000/api/publicaciones/6ad90e953b61d2b4358c3646",
+            "method": "PATCH",
+            "sortNum": 70000,
+            "created": "2026-10-21T19:20:13.915Z",
+            "modified": "2026-10-21T19:20:13.915Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"requiereDeposito\": true,",
+                    "  \"deposito\": 2500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "6deb6dd4-e598-4fc0-8730-720f58b31d47",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Crear publicacion para borrar",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2026-10-21T19:23:24.634Z",
+            "modified": "2026-10-21T19:23:24.634Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"BORRAR-002\",",
+                    "  \"titulo\": \"Publicacion para probar metodo delete\",",
+                    "  \"descripcion\": \"Esta publicacion es un ejemplo de prueba para comprobar que si podemos eliminarla.\",",
+                    "  \"categoria\": \"herramientas\",",
+                    "  \"precioPorDia\": 1000",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "185b6f03-4f2c-4c1a-8a2e-03b5b522e472",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Eliminar publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad911963b61d2b4358c3647",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2026-10-21T19:26:02.154Z",
+            "modified": "2026-10-21T19:26:02.155Z",
+            "headers": []
+        },
+        {
+            "_id": "08781baa-66bc-4b32-84c6-087674bc688e",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Estado del servicio",
+            "url": "http://localhost:3000/api/salud",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2026-10-21T19:28:11.494Z",
+            "modified": "2026-10-21T19:28:11.495Z",
+            "headers": []
+        },
+        {
+            "_id": "dafe105d-98ca-4a56-aacb-d4ece38988ff",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar por categoria",
+            "url": "http://localhost:3000/api/publicaciones?categoria=camping",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2026-10-21T22:07:12.165Z",
+            "modified": "2026-10-21T22:07:12.165Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "camping",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "94cf78f7-b03c-47e5-b3ad-ce537b09af7d",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar por estado",
+            "url": "http://localhost:3000/api/publicaciones?estado=disponible",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2026-10-21T22:22:02.868Z",
+            "modified": "2026-10-21T22:22:02.868Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "estado",
+                    "value": "disponible",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "9064ec3d-3a7d-4593-bd29-cf0e677aaf18",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar con deposito",
+            "url": "http://localhost:3000/api/publicaciones?requiereDeposito=true",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2026-10-21T22:44:02.495Z",
+            "modified": "2026-10-21T22:44:02.495Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "requiereDeposito",
+                    "value": "true",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "d001766d-ce24-46e3-996d-af7310d80c49",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar sin deposito",
+            "url": "http://localhost:3000/api/publicaciones?requiereDeposito=false",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2026-10-21T22:45:13.967Z",
+            "modified": "2026-10-21T22:45:13.967Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "requiereDeposito",
+                    "value": "false",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "5360cf17-bda2-4ae7-b64c-0e420f1c2c0b",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtros combinados",
+            "url": "http://localhost:3000/api/publicaciones?categoria=camping&estado=disponible&requiereDeposito=true",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2026-10-21T22:46:43.505Z",
+            "modified": "2026-10-21T22:46:43.505Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "camping",
+                    "isPath": false
+                },
+                {
+                    "name": "estado",
+                    "value": "disponible",
+                    "isPath": false
+                },
+                {
+                    "name": "requiereDeposito",
+                    "value": "true",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "c5a7aa4c-8ccb-4dbf-a641-e30a541ed525",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Alquilar publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad8bafb188686a7d2a15dc3/alquilar",
+            "method": "POST",
+            "sortNum": 170000,
+            "created": "2026-10-22T00:30:33.215Z",
+            "modified": "2026-10-22T00:30:33.215Z",
+            "headers": []
+        }
+    ],
+    "ref": "EMmahB3aCihN854u0iuSCW9ViNKftYBG02xbCMdvP-FSMbXW0dJ8S_Ek5SSiH0tw_HyydAJk0Dadqp9XuTEiJA"
+}

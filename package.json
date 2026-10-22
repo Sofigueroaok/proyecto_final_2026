@@ -19,7 +19,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node --env-file=.env index.js",
-    "dev": "node --watch --env-file=.env index.js"
+    "dev": "node --watch --env-file=.env index.js",
+    "semilla": "node --env-file=.env semilla.js"
   },
   "dependencies": {
     "express": "5.2.1",
