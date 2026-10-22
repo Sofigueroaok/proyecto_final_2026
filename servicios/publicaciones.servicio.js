@@ -1,5 +1,5 @@
 import Publicacion from "../modelos/publicacion.js";
-import { ErrorHttp } from "../errores/errorHttp.js";
+import { ErrorHttp } from "../errores/errorhttp.js";
 
 export async function listar({ categoria, estado, requiereDeposito } = {}) {
     

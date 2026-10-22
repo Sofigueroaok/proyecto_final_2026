@@ -1,4 +1,4 @@
-import { ErrorHttp } from '../errores/ErrorHttp.js';
+import { ErrorHttp } from '../errores/errorhttp.js';
 
 export function soloAdmin(req, res, next) {
   const clave = process.env.CLAVE_ADMIN;
