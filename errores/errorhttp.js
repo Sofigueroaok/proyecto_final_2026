@@ -6,6 +6,10 @@ export class ErrorHttp extends Error {
         this.detalle = detalle;
     }
 
+    static noAutorizado(mensaje = 'No autorizado') {
+        return new ErrorHttp(401, mensaje);
+    }
+
     static noEncontrado(mensaje = "Recurso no encontrado", detalle) {
     return new ErrorHttp(404, mensaje, detalle);
 }
