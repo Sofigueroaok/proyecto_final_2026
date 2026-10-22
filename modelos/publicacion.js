@@ -73,5 +73,6 @@ const publicacionEsquema = new mongoose.Schema({
 
 });
 
+
 const Publicacion = mongoose.model("Publicacion", publicacionEsquema, "publicaciones"); // le pedimos a mongoose que cree un modelo con moongoose.model, dandole el nombre "publicacion" y llamando al esquena que construimos
 export default Publicacion; // exportamos asi otros archivos del proyecto pueden usar este modelo()
