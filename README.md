@@ -1,8 +1,13 @@
 # Gatherly
 
-Gatherly es una API para publicar y alquilar objetos de uso esporádico: cosas que una persona tiene, pero no usa todos los días, y que pueden servirle a otra por un tiempo. Una publicación muestra qué objeto se ofrece, cuánto cuesta por día y si está disponible. La API permite crear publicaciones, consultarlas, modificarlas, eliminarlas y marcarlas como alquiladas.
+Gatherly es nuestro proyecto final de una app utilizada para publicar
+y alquilar objetos de uso esporádico: cosas que una persona tiene, pero no usa
+todos los días, y que pueden servirle a otra por un tiempo. Una publicación muestra que
+objeto se ofrece, cuánto cuesta por día y si está disponible. La API permite
+crear publicaciones, consultarlas, modificarlas, eliminarlas y marcarlas como alquiladas.
 
-Las publicaciones se guardan en MongoDB. El listado se puede filtrar por categoría, estado y necesidad de depósito, por separado o combinando los filtros.
+Las publicaciones se guardan en MongoDB. El listado se puede filtrar por categoría,
+estado y necesidad de depósito, por separado o combinando los filtros.
 
 ## Tecnologías
 
@@ -122,19 +127,16 @@ X-Clave: VALOR_DE_CLAVE_ADMIN
 
 Sin el encabezado correcto, la respuesta es 401.
 
-La colección exportada de Thunder Client está en `pruebas/gatherly.pruebaspublicaciones.json` y permite repetir los pedidos desde la extensión.
+La colección exportada de Thunder Client está en `pruebas/gatherly.pruebaspublicaciones.json` y permite repetir los pedidos desde la extensión. Para usar sus pedidos con `{id}`, hay que reemplazar los ID de ejemplo por uno devuelto por el listado. En el DELETE, sustituir `REEMPLAZAR_CON_CLAVE_ADMIN` por el valor de `CLAVE_ADMIN` del `.env` local solo al probar; nunca guardar la clave real en el repositorio. La prueba de código duplicado requiere haber ejecutado antes la semilla.
 
 ## Decisiones
 
 1. **Guardar en MongoDB:** las publicaciones permanecen guardadas aunque se reinicie el servidor. Mongoose permite definir los campos y validar valores como la categoría, el estado y el precio mínimo.
 2. **Separar rutas, controladores y servicios:** las rutas reciben los pedidos, los controladores preparan las respuestas y los servicios contienen las consultas y reglas de las publicaciones. Así se puede encontrar más fácilmente dónde hacer un cambio.
 3. **Representar el alquiler con el estado:** cada publicación ofrece un objeto, sin cantidad de unidades. Por eso alquilar cambia `disponible` a `alquilado` en una sola operación de MongoDB. Si ya estaba alquilado, se informa un conflicto.
+4. **Uso de inteligencia artificial:** se utilizó como apoyo para comprender conceptos, revisar ejemplos y preparar la documentación. El código y las decisiones del proyecto se revisaron y probaron para poder explicarlos en la defensa.
 
 ## Integrantes
 
 - **Selena García:** modelo y operaciones de publicaciones, filtros, alquiler, pruebas y semilla.
 - **Sofía Figueroa:** configuración inicial del servidor y conexión, middlewares y manejo de errores.
-
-## Uso de inteligencia artificial
-
-Se utilizó como apoyo para comprender conceptos, revisar ejemplos y preparar la documentación. El código y las decisiones del proyecto se revisaron y probaron para poder explicarlos en la defensa.

@@ -133,7 +133,12 @@
             "sortNum": 90000,
             "created": "2026-10-21T19:26:02.154Z",
             "modified": "2026-10-21T19:26:02.155Z",
-            "headers": []
+            "headers": [
+                {
+                    "name": "X-Clave",
+                    "value": "REEMPLAZAR_CON_CLAVE_ADMIN"
+                }
+            ]
         },
         {
             "_id": "08781baa-66bc-4b32-84c6-087674bc688e",
@@ -262,6 +267,116 @@
             "sortNum": 170000,
             "created": "2026-10-22T00:30:33.215Z",
             "modified": "2026-10-22T00:30:33.215Z",
+            "headers": []
+        },
+        {
+            "_id": "036b48ec-ff65-4259-8eb0-83812e393480",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 400 - ID mal formado",
+            "url": "http://localhost:3000/api/publicaciones/abc",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2026-10-22T10:31:38.962Z",
+            "modified": "2026-10-22T10:31:38.962Z",
+            "headers": []
+        },
+        {
+            "_id": "2027fde3-da32-497a-b77c-7bdf71c6a515",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 404 - ID valido inexistente",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2026-10-22T10:31:38.962Z",
+            "modified": "2026-10-22T10:31:38.962Z",
+            "headers": []
+        },
+        {
+            "_id": "0b1a9439-5922-4d04-9cf6-a52197b5f102",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 422 - Descripcion demasiado corta",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 220000,
+            "created": "2026-10-22T10:31:38.962Z",
+            "modified": "2026-10-22T10:31:38.962Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"PRUEBA-INVALIDA-NO-SE-GUARDA\",",
+                    "  \"titulo\": \"Prueba\",",
+                    "  \"descripcion\": \"Corta\",",
+                    "  \"categoria\": \"camping\",",
+                    "  \"precioPorDia\": 1500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "51cd4feb-7c03-4167-b3a9-78ce223f0287",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 409 - Codigo repetido despues de semilla",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 230000,
+            "created": "2026-10-22T10:31:38.962Z",
+            "modified": "2026-10-22T10:31:38.962Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"SEM-CAM-0001\",",
+                    "  \"titulo\": \"Cámara repetida\",",
+                    "  \"descripcion\": \"Prueba de código duplicado con descripción suficiente para cumplir la validación del modelo.\",",
+                    "  \"categoria\": \"foto-video\",",
+                    "  \"precioPorDia\": 10000",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "1ee37a96-e084-4342-ba94-b45030a70417",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 401 - Eliminar sin clave",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "DELETE",
+            "sortNum": 240000,
+            "created": "2026-10-22T10:31:38.962Z",
+            "modified": "2026-10-22T10:31:38.962Z",
+            "headers": []
+        },
+        {
+            "_id": "0107278c-0150-46bf-8dfa-b3ff5c299453",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 404 - Alquilar ID inexistente",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000/alquilar",
+            "method": "POST",
+            "sortNum": 250000,
+            "created": "2026-10-22T10:31:38.962Z",
+            "modified": "2026-10-22T10:31:38.962Z",
+            "headers": []
+        },
+        {
+            "_id": "36163f5d-8e46-4cc3-88aa-699e9af24a00",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 404 - Ruta inexistente",
+            "url": "http://localhost:3000/api/ruta-inexistente",
+            "method": "GET",
+            "sortNum": 260000,
+            "created": "2026-10-22T10:31:38.962Z",
+            "modified": "2026-10-22T10:31:38.962Z",
             "headers": []
         }
     ],
