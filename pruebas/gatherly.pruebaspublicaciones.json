@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Gatherly: pruebas de publicaciones",
     "collectionId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
-    "dateExported": "2026-10-22T00:34:16.423Z",
+    "dateExported": "2026-10-22T11:33:31.345Z",
     "version": "1.4",
     "folders": [],
     "requests": [
@@ -263,7 +263,93 @@
             "created": "2026-10-22T00:30:33.215Z",
             "modified": "2026-10-22T00:30:33.215Z",
             "headers": []
+        },
+        {
+            "_id": "24a4f3bd-9e0a-4bb0-847f-5945cab1a7f5",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 400-ID invalido",
+            "url": "http://localhost:3000/api/publicaciones/abcdfg",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2026-10-22T11:22:28.442Z",
+            "modified": "2026-10-22T11:22:28.443Z",
+            "headers": []
+        },
+        {
+            "_id": "6328b2ed-996e-430e-9668-5ef204632a84",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 404 - publicacion no existe",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2026-10-22T11:23:37.107Z",
+            "modified": "2026-10-22T11:23:37.107Z",
+            "headers": []
+        },
+        {
+            "_id": "05d917c1-6b23-4131-82bd-c5191a39b974",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 422 - descripcion corta",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 210000,
+            "created": "2026-10-22T11:25:59.732Z",
+            "modified": "2026-10-22T11:25:59.732Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"PRUEBA-422-00X1\",",
+                    "  \"titulo\": \"Carpa de prueba\",",
+                    "  \"descripcion\": \"Corta\",",
+                    "  \"categoria\": \"camping\",",
+                    "  \"precioPorDia\": 1500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "d49ba5cb-92da-4c3a-bdc8-9de64e1a4d71",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 401 - no clave",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "DELETE",
+            "sortNum": 220000,
+            "created": "2026-10-22T11:27:30.163Z",
+            "modified": "2026-10-22T11:27:30.163Z",
+            "headers": []
+        },
+        {
+            "_id": "64876758-9eea-4dbd-b084-10327959d860",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 409 - codigo repetido",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 230000,
+            "created": "2026-10-22T11:31:15.938Z",
+            "modified": "2026-10-22T11:31:15.938Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"SEM-CAM-0001\",",
+                    "  \"titulo\": \"Cámara repetida\",",
+                    "  \"descripcion\": \"Esta es una publicación de prueba con una descripción suficientemente larga para cumplir la validación.\",",
+                    "  \"categoria\": \"foto-video\",",
+                    "  \"precioPorDia\": 10000",
+                    "}"
+                ],
+                "form": []
+            }
         }
     ],
-    "ref": "EMmahB3aCihN854u0iuSCW9ViNKftYBG02xbCMdvP-FSMbXW0dJ8S_Ek5SSiH0tw_HyydAJk0Dadqp9XuTEiJA"
+    "ref": "EMmahB3aCihN854u0iuSCfJCbONb62I8vGuWTDsDlR8nzfGjCKwSJxTrwefuwkuV6y1jV5Zc6IgnibgGeKleRw"
 }

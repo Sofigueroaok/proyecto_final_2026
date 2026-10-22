@@ -1,5 +1,21 @@
 export function manejadorDeErrores(err, req, res, next) {
-  const estado = err.estado ?? 500;
+  if (res.headersSent) return next(err);
+
+  let estado = err.estado ?? 500;
+  let mensaje = err.message;
+  let detalle = err.detalle;
+
+  if (err.name === 'CastError') {
+    estado = 400;
+    mensaje = 'ID o dato con formato inválido';
+  } else if (err.name === 'ValidationError') {
+    estado = 422;
+    mensaje = 'Los datos no cumplen las validaciones';
+    detalle = Object.values(err.errors).map(error => error.message);
+  } else if (err.code === 11000) {
+    estado = 409;
+    mensaje = 'Ya existe una publicación con ese código';
+  }
 
   if (estado >= 500) {
     console.error(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
@@ -7,8 +23,7 @@ export function manejadorDeErrores(err, req, res, next) {
   }
 
   res.status(estado).json({
-    error: estado >= 500 ? 'Error interno del servidor' : err.message,
-    detalle: estado >= 500 ? undefined : err.detalle,
-    stack: estado >= 500 && !esProduccion ? err.stack : undefined,
+    error: estado >= 500 ? 'Error interno del servidor' : mensaje,
+    ...(estado < 500 && detalle !== undefined ? { detalle } : {})
   });
 }

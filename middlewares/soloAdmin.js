@@ -1,7 +1,8 @@
 import { ErrorHttp } from '../errores/ErrorHttp.js';
 
 export function soloAdmin(req, res, next) {
-  if (req.get('X-Clave') !== config.claveAdmin) {
+  const clave = process.env.CLAVE_ADMIN;
+  if (!clave || req.get('X-Clave') !== clave) {
     return next(ErrorHttp.noAutorizado('Falta el encabezado X-Clave o es incorrecto'));
   }
   next();
