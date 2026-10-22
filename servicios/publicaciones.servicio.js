@@ -63,4 +63,22 @@ export async function eliminar(id) { // busca la publicacion por su id y la borr
 
 }
 
+export async function alquilar(id) { // existe esta publicacion y esta diisponible para alquilar?
+    // busca esa publicacion solo si esta disponible y la pasa a alquilada
+    const publicacion = await Publicacion.findOneAndUpdate(
+        { _id: id, estado: "disponible" },
+        { estado: "alquilado" },
+        { returnDocument: "after", runValidators: true }
+    );
 
+    if (!publicacion) {
+        // comprueba si existe, 'obtener' ya avisa con 404 si no existe
+        await obtener(id);
+
+        // si existe pero ya no esta disponible, avisa con 409
+        throw ErrorHttp.conflicto("Esta publicación ya está alquilada", { id });
+    }
+
+    // devuelve la publicacion con el estado actualizado
+    return publicacion;
+}

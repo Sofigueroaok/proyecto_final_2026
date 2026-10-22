@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Gatherly: pruebas de publicaciones",
     "collectionId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
-    "dateExported": "2026-10-21T22:49:28.682Z",
+    "dateExported": "2026-10-22T00:34:16.423Z",
     "version": "1.4",
     "folders": [],
     "requests": [
@@ -251,7 +251,19 @@
                     "isPath": false
                 }
             ]
+        },
+        {
+            "_id": "c5a7aa4c-8ccb-4dbf-a641-e30a541ed525",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Alquilar publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad8bafb188686a7d2a15dc3/alquilar",
+            "method": "POST",
+            "sortNum": 170000,
+            "created": "2026-10-22T00:30:33.215Z",
+            "modified": "2026-10-22T00:30:33.215Z",
+            "headers": []
         }
     ],
-    "ref": "EMmahB3aCihN854u0iuSCYZQzS8x49yrDENt9OR4ACXK0MZpOBk5EvkGzQHcNGomkQoKaZXASK9rPKm_3XDzHg"
+    "ref": "EMmahB3aCihN854u0iuSCW9ViNKftYBG02xbCMdvP-FSMbXW0dJ8S_Ek5SSiH0tw_HyydAJk0Dadqp9XuTEiJA"
 }
