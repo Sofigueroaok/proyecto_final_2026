@@ -1,4 +1,3 @@
-import {producto} from '../datos.js';
 export function manejadorDeErrores(err, req, res, next) {
   const estado = err.estado ?? 500;
 
