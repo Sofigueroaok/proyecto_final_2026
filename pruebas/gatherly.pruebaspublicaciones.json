@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Gatherly: pruebas de publicaciones",
     "collectionId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
-    "dateExported": "2026-10-22T00:34:16.423Z",
+    "dateExported": "2026-10-22T11:33:31.345Z",
     "version": "1.4",
     "folders": [],
     "requests": [
@@ -133,12 +133,7 @@
             "sortNum": 90000,
             "created": "2026-10-21T19:26:02.154Z",
             "modified": "2026-10-21T19:26:02.155Z",
-            "headers": [
-                {
-                    "name": "X-Clave",
-                    "value": "REEMPLAZAR_CON_CLAVE_ADMIN"
-                }
-            ]
+            "headers": []
         },
         {
             "_id": "08781baa-66bc-4b32-84c6-087674bc688e",
@@ -270,46 +265,46 @@
             "headers": []
         },
         {
-            "_id": "036b48ec-ff65-4259-8eb0-83812e393480",
+            "_id": "24a4f3bd-9e0a-4bb0-847f-5945cab1a7f5",
             "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
             "containerId": "",
-            "name": "ERROR 400 - ID mal formado",
-            "url": "http://localhost:3000/api/publicaciones/abc",
+            "name": "ERROR 400-ID invalido",
+            "url": "http://localhost:3000/api/publicaciones/abcdfg",
             "method": "GET",
-            "sortNum": 200000,
-            "created": "2026-10-22T10:31:38.962Z",
-            "modified": "2026-10-22T10:31:38.962Z",
+            "sortNum": 190000,
+            "created": "2026-10-22T11:22:28.442Z",
+            "modified": "2026-10-22T11:22:28.443Z",
             "headers": []
         },
         {
-            "_id": "2027fde3-da32-497a-b77c-7bdf71c6a515",
+            "_id": "6328b2ed-996e-430e-9668-5ef204632a84",
             "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
             "containerId": "",
-            "name": "ERROR 404 - ID valido inexistente",
+            "name": "ERROR 404 - publicacion no existe",
             "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
             "method": "GET",
-            "sortNum": 210000,
-            "created": "2026-10-22T10:31:38.962Z",
-            "modified": "2026-10-22T10:31:38.962Z",
+            "sortNum": 200000,
+            "created": "2026-10-22T11:23:37.107Z",
+            "modified": "2026-10-22T11:23:37.107Z",
             "headers": []
         },
         {
-            "_id": "0b1a9439-5922-4d04-9cf6-a52197b5f102",
+            "_id": "05d917c1-6b23-4131-82bd-c5191a39b974",
             "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
             "containerId": "",
-            "name": "ERROR 422 - Descripcion demasiado corta",
+            "name": "ERROR 422 - descripcion corta",
             "url": "http://localhost:3000/api/publicaciones",
             "method": "POST",
-            "sortNum": 220000,
-            "created": "2026-10-22T10:31:38.962Z",
-            "modified": "2026-10-22T10:31:38.962Z",
+            "sortNum": 210000,
+            "created": "2026-10-22T11:25:59.732Z",
+            "modified": "2026-10-22T11:25:59.732Z",
             "headers": [],
             "body": {
                 "type": "json",
                 "raw": [
                     "{",
-                    "  \"codigo\": \"PRUEBA-INVALIDA-NO-SE-GUARDA\",",
-                    "  \"titulo\": \"Prueba\",",
+                    "  \"codigo\": \"PRUEBA-422-00X1\",",
+                    "  \"titulo\": \"Carpa de prueba\",",
                     "  \"descripcion\": \"Corta\",",
                     "  \"categoria\": \"camping\",",
                     "  \"precioPorDia\": 1500",
@@ -319,15 +314,27 @@
             }
         },
         {
-            "_id": "51cd4feb-7c03-4167-b3a9-78ce223f0287",
+            "_id": "d49ba5cb-92da-4c3a-bdc8-9de64e1a4d71",
             "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
             "containerId": "",
-            "name": "ERROR 409 - Codigo repetido despues de semilla",
+            "name": "ERROR 401 - no clave",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "DELETE",
+            "sortNum": 220000,
+            "created": "2026-10-22T11:27:30.163Z",
+            "modified": "2026-10-22T11:27:30.163Z",
+            "headers": []
+        },
+        {
+            "_id": "64876758-9eea-4dbd-b084-10327959d860",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 409 - codigo repetido",
             "url": "http://localhost:3000/api/publicaciones",
             "method": "POST",
             "sortNum": 230000,
-            "created": "2026-10-22T10:31:38.962Z",
-            "modified": "2026-10-22T10:31:38.962Z",
+            "created": "2026-10-22T11:31:15.938Z",
+            "modified": "2026-10-22T11:31:15.938Z",
             "headers": [],
             "body": {
                 "type": "json",
@@ -335,50 +342,14 @@
                     "{",
                     "  \"codigo\": \"SEM-CAM-0001\",",
                     "  \"titulo\": \"Cámara repetida\",",
-                    "  \"descripcion\": \"Prueba de código duplicado con descripción suficiente para cumplir la validación del modelo.\",",
+                    "  \"descripcion\": \"Esta es una publicación de prueba con una descripción suficientemente larga para cumplir la validación.\",",
                     "  \"categoria\": \"foto-video\",",
                     "  \"precioPorDia\": 10000",
                     "}"
                 ],
                 "form": []
             }
-        },
-        {
-            "_id": "1ee37a96-e084-4342-ba94-b45030a70417",
-            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
-            "containerId": "",
-            "name": "ERROR 401 - Eliminar sin clave",
-            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
-            "method": "DELETE",
-            "sortNum": 240000,
-            "created": "2026-10-22T10:31:38.962Z",
-            "modified": "2026-10-22T10:31:38.962Z",
-            "headers": []
-        },
-        {
-            "_id": "0107278c-0150-46bf-8dfa-b3ff5c299453",
-            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
-            "containerId": "",
-            "name": "ERROR 404 - Alquilar ID inexistente",
-            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000/alquilar",
-            "method": "POST",
-            "sortNum": 250000,
-            "created": "2026-10-22T10:31:38.962Z",
-            "modified": "2026-10-22T10:31:38.962Z",
-            "headers": []
-        },
-        {
-            "_id": "36163f5d-8e46-4cc3-88aa-699e9af24a00",
-            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
-            "containerId": "",
-            "name": "ERROR 404 - Ruta inexistente",
-            "url": "http://localhost:3000/api/ruta-inexistente",
-            "method": "GET",
-            "sortNum": 260000,
-            "created": "2026-10-22T10:31:38.962Z",
-            "modified": "2026-10-22T10:31:38.962Z",
-            "headers": []
         }
     ],
-    "ref": "EMmahB3aCihN854u0iuSCW9ViNKftYBG02xbCMdvP-FSMbXW0dJ8S_Ek5SSiH0tw_HyydAJk0Dadqp9XuTEiJA"
+    "ref": "EMmahB3aCihN854u0iuSCfJCbONb62I8vGuWTDsDlR8nzfGjCKwSJxTrwefuwkuV6y1jV5Zc6IgnibgGeKleRw"
 }

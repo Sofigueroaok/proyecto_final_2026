@@ -1,13 +1,10 @@
+# PRIMER PARCIAL - APLICACIONES HIBRIDAS - ISEC - OPCION B.
+
 # Gatherly
 
-Gatherly es nuestro proyecto final de una app utilizada para publicar
-y alquilar objetos de uso esporádico: cosas que una persona tiene, pero no usa
-todos los días, y que pueden servirle a otra por un tiempo. Una publicación muestra que
-objeto se ofrece, cuánto cuesta por día y si está disponible. La API permite
-crear publicaciones, consultarlas, modificarlas, eliminarlas y marcarlas como alquiladas.
+Gatherly es la API que hicimos para nuestro proyecto final. La idea de la app es que una persona pueda publicar un objeto que usa poco, como una cámara o una hidrolavadora, y otra pueda alquilarlo por un tiempo. En cada publicación se ve cuánto cuesta por día, si pide depósito y si está disponible.
 
-Las publicaciones se guardan en MongoDB. El listado se puede filtrar por categoría,
-estado y necesidad de depósito, por separado o combinando los filtros.
+Nuestra API permite crear publicaciones, verlas, modificar sus datos, eliminarlas y marcarlas como alquiladas. Las guardamos en MongoDB. También se pueden buscar por categoría, estado y depósito, usando un filtro o varios juntos.
 
 ## Tecnologías
 
@@ -21,7 +18,7 @@ estado y necesidad de depósito, por separado o combinando los filtros.
 - Node.js 20.19 o superior y npm.
 - Una base de MongoDB accesible, por ejemplo en MongoDB Atlas.
 
-1. Clonar el repositorio y entrar en su carpeta.
+1. Clonar el repositorio y entrar en la carpeta.
 2. Ejecutar `npm install`.
 3. Copiar `.env.ejemplo` como `.env` y completar los valores:
 
@@ -31,18 +28,18 @@ estado y necesidad de depósito, por separado o combinando los filtros.
    CLAVE_ADMIN=REEMPLAZAR_POR_UNA_CLAVE_PRIVADA
    ```
 
-   `PUERTO` es el puerto donde escuchará la API. `MONGODB_URI` es la dirección de conexión a MongoDB. `CLAVE_ADMIN` protege la eliminación de publicaciones y se envía en el encabezado `X-Clave`. El nombre de la base, `gatherly`, se indica en el código. El archivo `.env` es local y no debe subirse al repositorio.
+   PUERTO es el puerto donde escuchara la API. MONGODB_URI es la dirección de conexión a MongoDB. CLAVE_ADMIN protege la eliminación de publicaciones y se envía en el encabezado X-Clave. El nombre de la base, gatherly, se indica en el código. El archivo `.env` es local y no se sube al repositorio.
 
-4. Iniciar la aplicación con `npm start`. Para reiniciarla automáticamente al editar, usar `npm run dev`.
+4. Iniciar la aplicación con `npm start`. 
 5. Comprobar que funciona con `GET http://localhost:3000/api/salud`. Si se usa otro puerto, cambiar `3000` en los ejemplos.
 
 ### Datos de ejemplo
 
-Opcionalmente, ejecutar `npm run semilla` para agregar una cámara, un parlante y una hidrolavadora. La semilla se ejecuta por separado del servidor. Está pensada para una base que todavía no tenga esas publicaciones: si se vuelve a ejecutar sobre la misma base, los códigos únicos se repetirán y MongoDB rechazará la carga. No borra las publicaciones existentes.
+Opcionalmente, ejecutar `npm run semilla` para agregar una cámara, un parlante y una hidrolavadora. Está pensada para una base que todavía no tenga esas publicaciones. No borra las publicaciones existentes.
 
 ## Rutas
 
-En las rutas con `{id}`, reemplazarlo por el `id` real de una publicación devuelta por la API. Los ejemplos usan `http://localhost:3000`.
+En las rutas con `{id}`, reemplazarlo por el id real de una publicación devuelta por la API. Los ejemplos usan `http://localhost:3000`.
 
 | Método | Ruta | Qué hace | Respuesta exitosa |
 | --- | --- | --- | --- |
@@ -80,7 +77,8 @@ GET http://localhost:3000/api/publicaciones?categoria=camping&estado=disponible&
 GET http://localhost:3000/api/publicaciones/{id}
 ```
 
-**Crear una publicación:** enviar el siguiente JSON en el cuerpo del pedido, con `Content-Type: application/json`.
+**Crear una publicación:** se puede enviar este JSON en el body del pedido,
+con `Content-Type: application/json`.
 
 ```http
 POST http://localhost:3000/api/publicaciones
@@ -110,7 +108,7 @@ Content-Type: application/json
 }
 ```
 
-**Alquilar una publicación disponible:** no necesita cuerpo.
+**Alquilar una publicación disponible:** no necesita body.
 
 ```http
 POST http://localhost:3000/api/publicaciones/{id}/alquilar
@@ -127,14 +125,15 @@ X-Clave: VALOR_DE_CLAVE_ADMIN
 
 Sin el encabezado correcto, la respuesta es 401.
 
-La colección exportada de Thunder Client está en `pruebas/gatherly.pruebaspublicaciones.json` y permite repetir los pedidos desde la extensión. Para usar sus pedidos con `{id}`, hay que reemplazar los ID de ejemplo por uno devuelto por el listado. En el DELETE, sustituir `REEMPLAZAR_CON_CLAVE_ADMIN` por el valor de `CLAVE_ADMIN` del `.env` local solo al probar; nunca guardar la clave real en el repositorio. La prueba de código duplicado requiere haber ejecutado antes la semilla.
+La colección exportada de Thunder Client está en `pruebas/gatherly.pruebaspublicaciones.json` y permite repetir los pedidos desde la extensión. Para usar sus pedidos con `{id}`, hay que reemplazar los ID de ejemplo por uno devuelto por el listado. En el DELETE, sustituir `REEMPLAZAR_CON_CLAVE_ADMIN` por el valor de `CLAVE_ADMIN` del `.env` local solo al probar; nunca guardar la clave real en el repositorio.
 
 ## Decisiones
 
-1. **Guardar en MongoDB:** las publicaciones permanecen guardadas aunque se reinicie el servidor. Mongoose permite definir los campos y validar valores como la categoría, el estado y el precio mínimo.
-2. **Separar rutas, controladores y servicios:** las rutas reciben los pedidos, los controladores preparan las respuestas y los servicios contienen las consultas y reglas de las publicaciones. Así se puede encontrar más fácilmente dónde hacer un cambio.
-3. **Representar el alquiler con el estado:** cada publicación ofrece un objeto, sin cantidad de unidades. Por eso alquilar cambia `disponible` a `alquilado` en una sola operación de MongoDB. Si ya estaba alquilado, se informa un conflicto.
-4. **Uso de inteligencia artificial:** se utilizó como apoyo para comprender conceptos, revisar ejemplos y preparar la documentación. El código y las decisiones del proyecto se revisaron y probaron para poder explicarlos en la defensa.
+1. **Hacer opcional el depósito de garantía:** no todos los objetos tienen el mismo valor ni necesitan las mismas condiciones para alquilarlos. Por eso cada publicación puede indicar si pide depósito y cuál es el monto. Si no se indica nada, por default no lo pide y el monto es 0.
+2. **Usar categorías predefinidas:** elegimos una lista de 5 categorías para que no se guarde una misma idea escrita de distintas formas. Esto también hace más útil el filtro por categoría.
+3. **Cambiar el estado al alquilar:** cada publicación representa un objeto, así que no necesitamos llevar un stock. Al alquilarlo pasa de `disponible` a `alquilado`. Si alguien intenta alquilarlo otra vez, la API responde 409.
+
+**Uso de inteligencia artificial:** sí usamos IA como ayuda para estudiar. Le pedimos explicaciones más sencillas de conceptos tecnicos que nos costaban mucho, ejemplos y orientación para pensar algunas decisiones y seguir avanzando con la organización el proyecto. También nos ayudó a redactar este README para que este completo y con el vocabulario preciso. Fuimos adaptando las respuestas a Gatherly y probando lo que hicimos para poder explicarlo.
 
 ## Integrantes
 
