@@ -1,184 +1,196 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* Estructura de la pagina */
+#root {
+  min-height: 100vh;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+.contenedor {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+.contenedor header,
+.contenedor main,
+.contenedor footer {
+  width: min(1120px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.contenedor header {
+  padding: 30px 0;
+  border-bottom: 1px solid #e8e8e8;
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+.contenedor h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.contenedor main {
+  flex: 1;
+  padding-top: 28px;
 }
 
-.ticks {
+/* Botones del menu */
+.contenedor main > button {
+  margin: 0 8px 60px 0;
+  padding: 11px 18px;
+  border: 0px solid #171717;
+  border-radius: 7px;
+  background: #171717;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.contenedor main > button:hover {
+  background: #3a3a3a;
+  transform: translateY(-2px);
+}
+
+.contenedor main > button:focus-visible,
+select:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
+}
+
+/* Contenido de cada pagina */
+.seccion {
+  padding-bottom: 80px;
+}
+
+.seccion h2 {
+  max-width: 850px;
+  margin: 0 0 18px;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -3px;
+}
+
+.seccion p {
+  max-width: 680px;
+  margin: 0 0 18px;
+  color: #5d5d5d;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+/* Selector de categoria */
+.seccion form {
+  margin: 36px 0;
+}
+
+/* Filtro de categoria */
+.seccion label {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 280px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.seccion label::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  bottom: 21px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #171717;
+  border-bottom: 2px solid #171717;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.seccion select {
   width: 100%;
+  height: 54px;
+  padding: 0 44px 0 18px;
+  appearance: none;
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #171717;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+.seccion select:hover {
+  border-color: #171717;
+}
+
+.seccion select:focus {
+  border-color: #171717;
+  box-shadow: 0 0 0 3px #eeeeee;
+}
+
+/* Publicaciones */
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.grilla > p {
+  grid-column: 1 / -1;
+  font-size: 14px;
+}
+
+.tarjeta {
+  padding: 24px;
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.tarjeta h2 {
+  margin-bottom: 16px;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.tarjeta .estado {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 5px;
+  background: #ececec;
+  color: #333333;
+  font-size: 13px;
+}
+
+/* Pie de pagina */
+.contenedor footer {
+  padding: 24px 0;
+  border-top: 1px solid #e8e8e8;
+  color: #777777;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .contenedor header,
+  .contenedor main,
+  .contenedor footer {
+    width: calc(100% - 32px);
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .contenedor main > button {
+    margin-bottom: 35px;
+    padding: 10px 12px;
+    font-size: 12px;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .seccion h2 {
+    letter-spacing: -1.5px;
   }
 }

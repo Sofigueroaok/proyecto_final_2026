@@ -119,7 +119,12 @@ function App() {
             >
               <option value="">Todas</option>
               <option value="camping">Camping</option>
+              <option value="musica">Música</option>
+              <option value="foto-video">Foto y video</option>
+              <option value="jardineria">Jardinería</option>
               <option value="herramientas">Herramientas</option>
+              <option value="diy">Hacelo vos mismo</option>
+              
             </select>
            </label>
               </form>
