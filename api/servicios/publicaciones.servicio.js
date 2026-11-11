@@ -1,5 +1,6 @@
 import Publicacion from "../modelos/publicacion.js";
 import { ErrorHttp } from "../errores/errorhttp.js";
+import "../modelos/usuario.js"; // registra el modelo para poder usar populate y q mongoose encuentre el modelo Usuario
 
 export async function listar({ categoria, estado, requiereDeposito } = {}) {
     
@@ -31,7 +32,8 @@ export async function crear(datos) { //recibe los datos, se fija si coinciden co
 }
 
 export async function obtener(id) {
-    const publicacion = await Publicacion.findById(id);
+    const publicacion = await Publicacion.findById(id)
+    .populate("propietario", "nombre"); // trae solo el nombre del dueño de la publicacion
 
     if (!publicacion) { // si no encuentra la publicacion avisa que no existe
         throw ErrorHttp.noEncontrado("No existe esa publicación", { id });
