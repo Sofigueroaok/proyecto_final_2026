@@ -16,7 +16,7 @@ Se necesita Node.js, npm y una base de MongoDB. Hay que instalar las dependencia
 
 1. En `api/`, copiar `.env.ejemplo` con el nombre `.env` y completar la conexion a MongoDB, el secreto del token, los origenes permitidos y las claves de la semilla.
 2. En `web/`, copiar `.env.ejemplo` con el nombre `.env`. La direccion de la API es `VITE_API_URL=http://localhost:3000/api`.
-3. Abrir una terminal en `api/` y ejecutar `npm install` y despues `npm start`.
+3. Abrir una terminal en `api/` y ejecutar `npm install`, despues `npm run semilla` y por ultimo `npm start`.
 4. Abrir otra terminal en `web/` y ejecutar `npm install` y despues `npm run dev`. Vite muestra la direccion para abrir la pagina.
 
 En PowerShell usamos `npm.cmd` en lugar de `npm` si Windows bloquea los scripts. Por ejemplo: `npm.cmd start`.
