@@ -1,9 +1,19 @@
-import { ErrorHttp } from '../errores/errorhttp.js';
+import { ErrorHttp } from "../errores/errorhttp.js";
 
 export function soloAdmin(req, res, next) {
-  const clave = process.env.CLAVE_ADMIN;
-  if (!clave || req.get('X-Clave') !== clave) {
-    return next(ErrorHttp.noAutorizado('Falta el encabezado X-Clave o es incorrecto'));
+  if (!req.usuario) {
+    return next(
+      ErrorHttp.noAutorizado("Se requiere iniciar sesión")
+    );
   }
+
+  if (req.usuario.rol !== "admin") {
+    return next(
+      ErrorHttp.prohibido(
+        "No tenés permisos para realizar esta acción"
+      )
+    );
+  }
+
   next();
 }
