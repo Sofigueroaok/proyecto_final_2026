@@ -45,11 +45,10 @@ function Registro() {
 
   return (
     <form onSubmit={registrar}>
-      <h2>Crear cuenta</h2>
-
       <input
         name="nombre"
         placeholder="Nombre"
+        required
         value={formulario.nombre}
         onChange={cambiar}
       />
@@ -58,6 +57,7 @@ function Registro() {
         name="email"
         type="email"
         placeholder="Email"
+        required
         value={formulario.email}
         onChange={cambiar}
       />
@@ -66,6 +66,7 @@ function Registro() {
         name="clave"
         type="password"
         placeholder="Contraseña"
+        required
         value={formulario.clave}
         onChange={cambiar}
       />

@@ -42,11 +42,10 @@ function Login({ onLogin }) {
 
   return (
     <form onSubmit={ingresar}>
-      <h2>Iniciar sesión</h2>
-
       <input
         type="email"
         placeholder="Email"
+        required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -54,6 +53,7 @@ function Login({ onLogin }) {
       <input
         type="password"
         placeholder="Contraseña"
+        required
         value={clave}
         onChange={(e) => setClave(e.target.value)}
       />

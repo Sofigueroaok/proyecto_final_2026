@@ -1,5 +1,7 @@
 // traemos la direccion para consultar nuestra api
 import { API } from './direccion-api.js'
+import Login from './login.jsx'
+import Registro from './registro.jsx'
 // useState guarda el estado y useEffect deja ejecutar la consulta a la api
 import { useState, useEffect } from 'react'
 import './App.css'
@@ -44,6 +46,7 @@ function App() {
   // pagina guarda la vista elegida; arranca en 'inicio'
   // setPagina deja cambiarla y actualizar la pantalla
   const [pagina, setPagina] = useState('inicio')
+  const [usuario, setUsuario] = useState(null)
 
     // Guarda la categoria elegida; vacio significa "todas".
   const [categoria, setCategoria] = useState('')
@@ -114,51 +117,26 @@ function App() {
       {/* si pagina 'login' se muestra la seccion de inicio de sesion */}
       {pagina === 'login' && (
         <Seccion titulo="Iniciar sesión">
-          <p>Ingresa a tu cuenta para continuar.</p>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <label>
-              Email
-              <input type="email" />
-            </label>
-
-            <label>
-              Contraseña
-              <input type="password" />
-            </label>
-
-            <button type="submit">
-              Ingresar
-            </button>
-          </form>
-
-          <button onClick={() => setPagina('registro')}> Registrarme</button>
+          {usuario ? (
+            <>
+              <p>Ingresaste como {usuario.nombre} ({usuario.rol}).</p>
+              <button onClick={() => {
+                localStorage.removeItem('token')
+                setUsuario(null)
+              }}>Cerrar sesion</button>
+            </>
+          ) : (
+            <Login onLogin={setUsuario} />
+          )}
+          <button onClick={() => setPagina('registro')}>Registrarme</button>
         </Seccion>
       )}
 
       {/* si pagina 'registro' se muestra la bienvenida */}
       {pagina === 'registro' && (
         <Seccion titulo="Crear cuenta">
-          <p>Registrate para empezar a usar Gatherly.</p>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <label>
-              Nombre
-              <input type="text" />
-            </label>
-
-            <label>
-              Email
-              <input type="email" />
-            </label>
-
-            <label>
-              Contraseña
-              <input type="password" />
-            </label>
-
-            <button type="submit" onClick={() => setPagina('inicio')}>
-              Registrarme
-            </button>
-          </form>
+          <Registro />
+          <button onClick={() => setPagina('login')}>Ir a login</button>
         </Seccion>
       )}
 

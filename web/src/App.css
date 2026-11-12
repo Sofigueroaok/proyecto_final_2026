@@ -86,6 +86,31 @@ select:focus-visible {
   margin: 36px 0;
 }
 
+/* Formularios de ingreso y registro */
+.seccion form input {
+  display: block;
+  width: min(320px, 100%);
+  margin: 0 0 12px;
+  padding: 14px;
+  border: 1px solid #d2d2d2;
+  border-radius: 8px;
+  background: #fff;
+  color: #171717;
+  font: inherit;
+}
+
+.seccion form button,
+.seccion > button {
+  margin: 0 8px 12px 0;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 7px;
+  background: #171717;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
 /* Filtro de categoria */
 .seccion label {
   position: relative;

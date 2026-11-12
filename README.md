@@ -57,7 +57,7 @@ En los pedidos que requieren sesion se envia el token como Bearer. Si falta o no
 
 ## Pagina web
 
-La pagina tiene Inicio, Publicaciones y Acerca de Gatherly. El menu cambia la vista con el estado de React. Tambien hay pantallas visuales de login y registro; las pruebas de esas funciones se hacen directamente sobre la API.
+La pagina tiene Inicio, Publicaciones y Acerca de Gatherly. El menu cambia la vista con el estado de React. Tambien se puede registrar un usuario e iniciar sesion desde la pagina. La API devuelve el usuario y un token al iniciar sesion.
 
 En Publicaciones, React pide los datos a nuestra API. Mientras espera muestra Cargando, y si falla muestra un mensaje de error. El selector de categoria guarda lo elegido en el estado y manda ese filtro a la API para hacer un pedido nuevo.
 
@@ -72,7 +72,7 @@ Los tokens y claves de esa coleccion se dejaron como variables `{{CLAVE_PRUEBA}}
 ## Quienes hicimos cada parte
 
 - Selena Garcia: publicaciones, relacion con usuario, populate, semilla, consultas y vistas de React, filtros y pruebas.
-- Sofia Figueroa: registro, login, proteccion de claves, JWT, permisos y pantallas visuales de login y registro.
+- Sofia Figueroa: registro, login, proteccion de claves, JWT, permisos y formularios de login y registro.
 - Juntas: integracion y revision del proyecto.
 
 ## Uso de inteligencia artificial
