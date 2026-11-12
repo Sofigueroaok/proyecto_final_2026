@@ -1,3 +1,8 @@
+//import dns from "node:dns";
+
+//dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+
 import mongoose from "mongoose"; // biblioteca para que podamos comunicarnnos con mongodb
 import app from "./app.js"; // traemos la app express
 
