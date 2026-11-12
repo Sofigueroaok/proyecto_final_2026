@@ -3,7 +3,7 @@ import { API } from "./direccion-api.js";
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [clave, setClave] = useState("");
   const [error, setError] = useState("");
 
   async function ingresar(e) {
@@ -20,7 +20,7 @@ function Login({ onLogin }) {
         },
         body: JSON.stringify({
           email,
-          password
+          clave
         })
       }
     );
@@ -54,8 +54,8 @@ function Login({ onLogin }) {
       <input
         type="password"
         placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={clave}
+        onChange={(e) => setClave(e.target.value)}
       />
 
       <button type="submit">

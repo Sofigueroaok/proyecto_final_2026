@@ -1,27 +1,10 @@
-import crypto from "node:crypto";
-import { promisify } from "node:util";
 import jwt from "jsonwebtoken";
 
-import Usuario from "../modelos/usuario.js";
+import Usuario, { verificar } from "../modelos/usuario.js";
 import { ErrorHttp } from "../errores/errorhttp.js";
 
-const scrypt = promisify(crypto.scrypt);
-
-const LONGITUD_SALT = 16;
-const LONGITUD_HASH = 64;
-
-async function generarHash(password, salt) {
-  const resultado = await scrypt(
-    password,
-    salt,
-    LONGITUD_HASH
-  );
-
-  return resultado.toString("hex");
-}
-
-export async function registrar({ nombre, email, password }) {
-  if (!nombre || !email || !password) {
+export async function registrar({ nombre, email, clave }) {
+  if (!nombre || !email || !clave) {
     throw ErrorHttp.peticionInvalida(
       "Nombre, email y contraseña son obligatorios"
     );
@@ -39,18 +22,10 @@ export async function registrar({ nombre, email, password }) {
     );
   }
 
-  const salt = crypto.randomBytes(LONGITUD_SALT).toString("hex");
-
-  const passwordHash = await generarHash(
-    password,
-    salt
-  );
-
   const usuario = await Usuario.create({
     nombre: nombre.trim(),
     email: emailNormalizado,
-    passwordHash,
-    salt,
+    clave,
     rol: "usuario"
   });
 
@@ -62,8 +37,8 @@ export async function registrar({ nombre, email, password }) {
   };
 }
 
-export async function login({ email, password }) {
-  if (!email || !password) {
+export async function login({ email, clave }) {
+  if (!email || !clave) {
     throw ErrorHttp.peticionInvalida(
       "Email y contraseña son obligatorios"
     );
@@ -73,37 +48,10 @@ export async function login({ email, password }) {
 
   const usuario = await Usuario.findOne({
     email: emailNormalizado
-  }).select("+passwordHash +salt");
+  }).select("+clave");
 
-  if (!usuario) {
-    throw ErrorHttp.noAutorizado(
-      "Email o contraseña incorrectos"
-    );
-  }
-
-  const hashCalculado = await generarHash(
-    password,
-    usuario.salt
-  );
-
-  const hashOriginal = Buffer.from(
-    usuario.passwordHash,
-    "hex"
-  );
-
-  const hashNuevo = Buffer.from(
-    hashCalculado,
-    "hex"
-  );
-
-  const coincide =
-    hashOriginal.length === hashNuevo.length &&
-    crypto.timingSafeEqual(
-      hashOriginal,
-      hashNuevo
-    );
-
-  if (!coincide) {
+  const valida = usuario !== null && await verificar(clave, usuario.clave);
+  if (!valida) {
     throw ErrorHttp.noAutorizado(
       "Email o contraseña incorrectos"
     );

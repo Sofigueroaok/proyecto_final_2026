@@ -5,7 +5,7 @@ function Registro() {
   const [formulario, setFormulario] = useState({
     nombre: "",
     email: "",
-    password: ""
+    clave: ""
   });
 
   const [mensaje, setMensaje] = useState("");
@@ -63,10 +63,10 @@ function Registro() {
       />
 
       <input
-        name="password"
+        name="clave"
         type="password"
         placeholder="Contraseña"
-        value={formulario.password}
+        value={formulario.clave}
         onChange={cambiar}
       />
 

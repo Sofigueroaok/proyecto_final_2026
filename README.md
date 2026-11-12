@@ -1,141 +1,80 @@
-# PRIMER PARCIAL - APLICACIONES HIBRIDAS - ISEC - OPCION B.
-
 # Gatherly
 
-Gatherly es la API que hicimos para nuestro proyecto final. La idea de la app es que una persona pueda publicar un objeto que usa poco, como una cámara o una hidrolavadora, y otra pueda alquilarlo por un tiempo. En cada publicación se ve cuánto cuesta por día, si pide depósito y si está disponible.
+Trabajo del segundo parcial de Aplicaciones Hibridas de ISEC.
 
-Nuestra API permite crear publicaciones, verlas, modificar sus datos, eliminarlas y marcarlas como alquiladas. Las guardamos en MongoDB. También se pueden buscar por categoría, estado y depósito, usando un filtro o varios juntos.
+Gatherly es un proyecto para publicar objetos que otras personas pueden alquilar. Cada publicacion tiene un precio por dia, una categoria y un estado que indica si esta disponible o alquilada.
 
-## Tecnologías
+## Como esta organizado
 
-- JavaScript con módulos ES y Node.js.
-- Express 5.2.1 para el servidor y las rutas.
-- MongoDB y Mongoose 9.11.1 para guardar y validar las publicaciones.
-- Thunder Client para probar los pedidos HTTP.
+- `api/`: servidor con Express, MongoDB y Mongoose.
+- `web/`: pagina hecha con React y Vite.
+- `api/pruebas/`: pedidos de Thunder Client para comprobar que funciona.
 
-## Requisitos e instalación
+## Como ponerlo en marcha
 
-- Node.js 20.19 o superior y npm.
-- Una base de MongoDB accesible, por ejemplo en MongoDB Atlas.
+Se necesita Node.js, npm y una base de MongoDB. Hay que instalar las dependencias por separado en `api/` y `web/`.
 
-1. Clonar el repositorio y entrar en la carpeta.
-2. Ejecutar `npm install`.
-3. Copiar `.env.ejemplo` como `.env` y completar los valores:
+1. En `api/`, copiar `.env.ejemplo` con el nombre `.env` y completar la conexion a MongoDB, el secreto del token, los origenes permitidos y las claves de la semilla.
+2. En `web/`, copiar `.env.ejemplo` con el nombre `.env`. La direccion de la API es `VITE_API_URL=http://localhost:3000/api`.
+3. Abrir una terminal en `api/` y ejecutar `npm install` y despues `npm start`.
+4. Abrir otra terminal en `web/` y ejecutar `npm install` y despues `npm run dev`. Vite muestra la direccion para abrir la pagina.
 
-   ```dotenv
-   PUERTO=3000
-   MONGODB_URI=mongodb+srv://USUARIO:CONTRASENA@SERVIDOR/
-   CLAVE_ADMIN=REEMPLAZAR_POR_UNA_CLAVE_PRIVADA
-   ```
+En PowerShell usamos `npm.cmd` en lugar de `npm` si Windows bloquea los scripts. Por ejemplo: `npm.cmd start`.
 
-   PUERTO es el puerto donde escuchara la API. MONGODB_URI es la dirección de conexión a MongoDB. CLAVE_ADMIN protege la eliminación de publicaciones y se envía en el encabezado X-Clave. El nombre de la base, gatherly, se indica en el código. El archivo `.env` es local y no se sube al repositorio.
+Los archivos `.env` tienen datos privados y no se suben a GitHub. Los archivos `.env.ejemplo` muestran que variables hay que completar, sin incluir valores reales.
 
-4. Iniciar la aplicación con `npm start`. 
-5. Comprobar que funciona con `GET http://localhost:3000/api/salud`. Si se usa otro puerto, cambiar `3000` en los ejemplos.
+## Datos de ejemplo
 
-### Datos de ejemplo
+Desde `api/` se puede ejecutar `npm run semilla`. La semilla crea un usuario comun, un administrador y tres publicaciones relacionadas con el usuario comun. Sus claves salen de `SEMILLA_CLAVE_USUARIO` y `SEMILLA_CLAVE_ADMIN`, que se completan en `api/.env`.
 
-Opcionalmente, ejecutar `npm run semilla` para agregar una cámara, un parlante y una hidrolavadora. Está pensada para una base que todavía no tenga esas publicaciones. No borra las publicaciones existentes.
+La semilla busca primero los datos por email o por codigo. Si ya existen, no los vuelve a crear. Si a una publicacion de ejemplo le falta propietario, se lo agrega.
 
-## Rutas
+Usuarios de ejemplo: `usuario.semilla@gatherly.test` y `admin.semilla@gatherly.test`. Las claves son las que se eligieron en el `.env` local.
 
-En las rutas con `{id}`, reemplazarlo por el id real de una publicación devuelta por la API. Los ejemplos usan `http://localhost:3000`.
+## Publicaciones y usuarios
 
-| Método | Ruta | Qué hace | Respuesta exitosa |
-| --- | --- | --- | --- |
-| GET | `/api/salud` | Comprueba que la API responde. | 200 y un objeto con `estado` y `hora`. |
-| GET | `/api/publicaciones` | Lista publicaciones; admite filtros. | 200 y una lista. |
-| GET | `/api/publicaciones/{id}` | Busca una publicación por ID. | 200 y la publicación. |
-| POST | `/api/publicaciones` | Crea una publicación. | 201 y la publicación creada. |
-| PATCH | `/api/publicaciones/{id}` | Modifica campos de una publicación. | 200 y la publicación actualizada. |
-| POST | `/api/publicaciones/{id}/alquilar` | Cambia de disponible a alquilado. | 200 con `id`, `titulo` y `estado`. |
-| DELETE | `/api/publicaciones/{id}` | Elimina una publicación con la clave de administrador. | 204, sin cuerpo de respuesta. |
+Cada publicacion guarda en `propietario` el identificador de un usuario. En el detalle de una publicacion usamos `populate` para traer el nombre de ese usuario. Asi podemos ver quien es el propietario sin guardar su nombre repetido en cada publicacion.
 
-### Ejemplos de pedidos
+## Rutas principales
 
-**Estado del servicio:**
+| Metodo | Direccion | Que hace |
+| --- | --- | --- |
+| GET | `/api/salud` | Comprueba que el servidor responde. |
+| GET | `/api/publicaciones` | Lista las publicaciones. |
+| GET | `/api/publicaciones/:id` | Muestra una publicacion y el nombre del propietario. |
+| POST | `/api/auth/registro` | Registra un usuario comun. |
+| POST | `/api/auth/login` | Inicia sesion y devuelve un token. |
+| POST | `/api/publicaciones` | Crea una publicacion. Requiere sesion. |
+| PATCH | `/api/publicaciones/:id` | Modifica una publicacion. Requiere sesion. |
+| POST | `/api/publicaciones/:id/alquilar` | Marca una publicacion como alquilada. Requiere sesion. |
+| DELETE | `/api/publicaciones/:id` | Elimina una publicacion. Requiere sesion y rol admin. |
 
-```http
-GET http://localhost:3000/api/salud
-```
+El listado permite filtrar con `categoria`, `estado` y `requiereDeposito` en la direccion. Por ejemplo: `http://localhost:3000/api/publicaciones?categoria=camping`. Se pueden combinar varios filtros.
 
-**Listar todas las publicaciones:**
+Para registrar un usuario se envian `nombre`, `email` y `clave` en formato JSON. Para iniciar sesion se envian `email` y `clave`. La clave se guarda protegida con sal y scrypt. La API usa JWT para reconocer la sesion.
 
-```http
-GET http://localhost:3000/api/publicaciones
-```
+En los pedidos que requieren sesion se envia el token como Bearer. Si falta o no es valido, la API responde 401. Si el usuario tiene sesion pero no tiene permiso de admin para borrar, responde 403.
 
-Para filtrar se pueden agregar `categoria`, `estado` y `requiereDeposito` a la dirección. `requiereDeposito` acepta `true` o `false`. Los tres filtros pueden combinarse:
+## Pagina web
 
-```http
-GET http://localhost:3000/api/publicaciones?categoria=camping&estado=disponible&requiereDeposito=true
-```
+La pagina tiene Inicio, Publicaciones y Acerca de Gatherly. El menu cambia la vista con el estado de React. Tambien hay pantallas visuales de login y registro; las pruebas de esas funciones se hacen directamente sobre la API.
 
-**Obtener una publicación:**
+En Publicaciones, React pide los datos a nuestra API. Mientras espera muestra Cargando, y si falla muestra un mensaje de error. El selector de categoria guarda lo elegido en el estado y manda ese filtro a la API para hacer un pedido nuevo.
 
-```http
-GET http://localhost:3000/api/publicaciones/{id}
-```
+Usamos componentes que reciben datos por props, como Tarjeta, y componentes que reciben contenido con `children`, como `Diseno` y `Seccion`.
 
-**Crear una publicación:** se puede enviar este JSON en el body del pedido,
-con `Content-Type: application/json`.
+## Pruebas
 
-```http
-POST http://localhost:3000/api/publicaciones
-Content-Type: application/json
+En `api/pruebas/gatherly.pruebasusuariosparcial2.json` esta la coleccion de Thunder Client. Incluye pedidos para registro, login, lectura de publicaciones, filtros, una ruta con propietario, escritura con sesion y respuestas 401 y 403. Tambien probamos crear una publicacion temporal y borrarla con un usuario admin: la API respondio 201 al crear y 204 al borrar.
 
-{
-  "codigo": "EJ-CAMP-001",
-  "titulo": "Carpa para cuatro personas",
-  "descripcion": "Carpa impermeable para cuatro personas, fácil de armar e ideal para una salida de fin de semana.",
-  "categoria": "camping",
-  "precioPorDia": 1500,
-  "requiereDeposito": true,
-  "deposito": 5000
-}
-```
+Los tokens y claves de esa coleccion se dejaron como variables `{{CLAVE_PRUEBA}}`, `{{CLAVE_ADMIN}}`, `{{TOKEN_USUARIO}}` y `{{TOKEN_ADMIN}}`. Antes de probar un pedido protegido hay que completar esos valores en Thunder Client con los datos locales. En otra base de datos tambien hay que cambiar los IDs de las publicaciones por IDs que devuelva el listado.
 
-La respuesta incluye el `id` generado. El estado inicial es `disponible` si no se envía otro valor. El `codigo` debe ser único.
+## Quienes hicimos cada parte
 
-**Modificar una publicación:** por ejemplo, cambiar su precio.
+- Selena Garcia: publicaciones, relacion con usuario, populate, semilla, consultas y vistas de React, filtros y pruebas.
+- Sofia Figueroa: registro, login, proteccion de claves, JWT, permisos y pantallas visuales de login y registro.
+- Juntas: integracion y revision del proyecto.
 
-```http
-PATCH http://localhost:3000/api/publicaciones/{id}
-Content-Type: application/json
+## Uso de inteligencia artificial
 
-{
-  "precioPorDia": 1800
-}
-```
-
-**Alquilar una publicación disponible:** no necesita body.
-
-```http
-POST http://localhost:3000/api/publicaciones/{id}/alquilar
-```
-
-Si ya está alquilada, la API responde con el código 409. Si el ID no corresponde a ninguna publicación, responde con 404.
-
-**Eliminar una publicación:**
-
-```http
-DELETE http://localhost:3000/api/publicaciones/{id}
-X-Clave: VALOR_DE_CLAVE_ADMIN
-```
-
-Sin el encabezado correcto, la respuesta es 401.
-
-La colección exportada de Thunder Client está en `pruebas/gatherly.pruebaspublicaciones.json` y permite repetir los pedidos desde la extensión. Para usar sus pedidos con `{id}`, hay que reemplazar los ID de ejemplo por uno devuelto por el listado. En el DELETE, sustituir `REEMPLAZAR_CON_CLAVE_ADMIN` por el valor de `CLAVE_ADMIN` del `.env` local solo al probar; nunca guardar la clave real en el repositorio.
-
-## Decisiones
-
-1. **Hacer opcional el depósito de garantía:** no todos los objetos tienen el mismo valor ni necesitan las mismas condiciones para alquilarlos. Por eso cada publicación puede indicar si pide depósito y cuál es el monto. Si no se indica nada, por default no lo pide y el monto es 0.
-2. **Usar categorías predefinidas:** elegimos una lista de 5 categorías para que no se guarde una misma idea escrita de distintas formas. Esto también hace más útil el filtro por categoría.
-3. **Cambiar el estado al alquilar:** cada publicación representa un objeto, así que no necesitamos llevar un stock. Al alquilarlo pasa de `disponible` a `alquilado`. Si alguien intenta alquilarlo otra vez, la API responde 409.
-
-**Uso de inteligencia artificial:** sí usamos IA como ayuda para estudiar. Le pedimos explicaciones más sencillas de conceptos tecnicos que nos costaban mucho, ejemplos y orientación para pensar algunas decisiones y seguir avanzando con la organización el proyecto. También nos ayudó a redactar este README para que este completo y con el vocabulario preciso. Fuimos adaptando las respuestas a Gatherly y probando lo que hicimos para poder explicarlo.
-
-## Integrantes
-
-- **Selena García:** modelo y operaciones de publicaciones, filtros, alquiler, pruebas y semilla.
-- **Sofía Figueroa:** configuración inicial del servidor y conexión, middlewares y manejo de errores.
+Usamos inteligencia artificial para pedir explicaciones de temas que nos costaban y para ayudarnos a ordenar el trabajo y redactar este README. Revisamos el codigo con las clases y probamos las funciones en nuestra computadora.

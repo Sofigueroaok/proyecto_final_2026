@@ -1,0 +1,446 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Gatherly: pruebas de publicaciones",
+    "collectionId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+    "dateExported": "2026-11-12T11:07:58.600Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "248f8feb-eaf0-491b-a877-b5e3cb92acd5",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Listar publicaciones",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2026-10-21T19:01:21.541Z",
+            "modified": "2026-10-21T19:01:21.542Z",
+            "headers": []
+        },
+        {
+            "_id": "19a07112-6cb0-469a-bb50-39b14cdc04b1",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Obtener publicacion por id",
+            "url": "http://localhost:3000/api/publicaciones/6ad976f3edf8201dbfb95bbe",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2026-10-21T19:03:48.457Z",
+            "modified": "2026-10-21T19:03:48.457Z",
+            "headers": []
+        },
+        {
+            "_id": "3a6b5b4a-cc68-4cd4-9b0c-6c16b60bd5b8",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Crear publicacion",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2026-10-21T19:08:08.758Z",
+            "modified": "2026-10-21T19:08:08.758Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"CARPA-001\",",
+                    "  \"titulo\": \"Carpa para cuatro personas\",",
+                    "  \"descripcion\": \"Excelente carpa para cuatro personas, lista para tu proximo camping. Impermeable y completa (incluye varillas y estacas). Se entrega limpia en su bolso de transporte.\",",
+                    "  \"categoria\": \"camping\",",
+                    "  \"precioPorDia\": 8500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "b44c3002-2396-416b-9c80-bdc74eff4eb3",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Modificar precio de publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad90e953b61d2b4358c3646",
+            "method": "PATCH",
+            "sortNum": 60000,
+            "created": "2026-10-21T19:15:06.033Z",
+            "modified": "2026-10-21T19:15:06.033Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"precioPorDia\": 9600",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "ca4dc046-445e-4148-b69e-4a9a2376c2d2",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Modificar deposito",
+            "url": "http://localhost:3000/api/publicaciones/6ad90e953b61d2b4358c3646",
+            "method": "PATCH",
+            "sortNum": 70000,
+            "created": "2026-10-21T19:20:13.915Z",
+            "modified": "2026-10-21T19:20:13.915Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"requiereDeposito\": true,",
+                    "  \"deposito\": 2500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "6deb6dd4-e598-4fc0-8730-720f58b31d47",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Crear publicacion para borrar",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2026-10-21T19:23:24.634Z",
+            "modified": "2026-10-21T19:23:24.634Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"PRUEBA-ADMIN-20261112\",",
+                    "  \"titulo\": \"Publicacion para probar metodo delete\",",
+                    "  \"descripcion\": \"Esta publicacion es un ejemplo de prueba para comprobar que si podemos eliminarla.\",",
+                    "  \"categoria\": \"herramientas\",",
+                    "  \"precioPorDia\": 1000",
+                    "}"
+                ],
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{TOKEN_ADMIN}}"
+            }
+        },
+        {
+            "_id": "185b6f03-4f2c-4c1a-8a2e-03b5b522e472",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Eliminar publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6af59929954bbff0efb1b126",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2026-10-21T19:26:02.154Z",
+            "modified": "2026-10-21T19:26:02.155Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{TOKEN_ADMIN}}"
+            }
+        },
+        {
+            "_id": "08781baa-66bc-4b32-84c6-087674bc688e",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Estado del servicio",
+            "url": "http://localhost:3000/api/salud",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2026-10-21T19:28:11.494Z",
+            "modified": "2026-10-21T19:28:11.495Z",
+            "headers": []
+        },
+        {
+            "_id": "dafe105d-98ca-4a56-aacb-d4ece38988ff",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar por categoria",
+            "url": "http://localhost:3000/api/publicaciones?categoria=camping",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2026-10-21T22:07:12.165Z",
+            "modified": "2026-10-21T22:07:12.165Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "camping",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "94cf78f7-b03c-47e5-b3ad-ce537b09af7d",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar por estado",
+            "url": "http://localhost:3000/api/publicaciones?estado=disponible",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2026-10-21T22:22:02.868Z",
+            "modified": "2026-10-21T22:22:02.868Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "estado",
+                    "value": "disponible",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "9064ec3d-3a7d-4593-bd29-cf0e677aaf18",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar con deposito",
+            "url": "http://localhost:3000/api/publicaciones?requiereDeposito=true",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2026-10-21T22:44:02.495Z",
+            "modified": "2026-10-21T22:44:02.495Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "requiereDeposito",
+                    "value": "true",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "d001766d-ce24-46e3-996d-af7310d80c49",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtrar sin deposito",
+            "url": "http://localhost:3000/api/publicaciones?requiereDeposito=false",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2026-10-21T22:45:13.967Z",
+            "modified": "2026-10-21T22:45:13.967Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "requiereDeposito",
+                    "value": "false",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "5360cf17-bda2-4ae7-b64c-0e420f1c2c0b",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Filtros combinados",
+            "url": "http://localhost:3000/api/publicaciones?categoria=camping&estado=disponible&requiereDeposito=true",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2026-10-21T22:46:43.505Z",
+            "modified": "2026-10-21T22:46:43.505Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "camping",
+                    "isPath": false
+                },
+                {
+                    "name": "estado",
+                    "value": "disponible",
+                    "isPath": false
+                },
+                {
+                    "name": "requiereDeposito",
+                    "value": "true",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "c5a7aa4c-8ccb-4dbf-a641-e30a541ed525",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Alquilar publicacion",
+            "url": "http://localhost:3000/api/publicaciones/6ad8bafb188686a7d2a15dc3/alquilar",
+            "method": "POST",
+            "sortNum": 170000,
+            "created": "2026-10-22T00:30:33.215Z",
+            "modified": "2026-10-22T00:30:33.215Z",
+            "headers": []
+        },
+        {
+            "_id": "24a4f3bd-9e0a-4bb0-847f-5945cab1a7f5",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 400-ID invalido",
+            "url": "http://localhost:3000/api/publicaciones/abcdfg",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2026-10-22T11:22:28.442Z",
+            "modified": "2026-10-22T11:22:28.443Z",
+            "headers": []
+        },
+        {
+            "_id": "6328b2ed-996e-430e-9668-5ef204632a84",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 404 - publicacion no existe",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2026-10-22T11:23:37.107Z",
+            "modified": "2026-10-22T11:23:37.107Z",
+            "headers": []
+        },
+        {
+            "_id": "05d917c1-6b23-4131-82bd-c5191a39b974",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 422 - descripcion corta",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 210000,
+            "created": "2026-10-22T11:25:59.732Z",
+            "modified": "2026-10-22T11:25:59.732Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"PRUEBA-422-00X1\",",
+                    "  \"titulo\": \"Carpa de prueba\",",
+                    "  \"descripcion\": \"Corta\",",
+                    "  \"categoria\": \"camping\",",
+                    "  \"precioPorDia\": 1500",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "d49ba5cb-92da-4c3a-bdc8-9de64e1a4d71",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 401 - no clave",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "DELETE",
+            "sortNum": 220000,
+            "created": "2026-10-22T11:27:30.163Z",
+            "modified": "2026-10-22T11:27:30.163Z",
+            "headers": []
+        },
+        {
+            "_id": "64876758-9eea-4dbd-b084-10327959d860",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 409 - codigo repetido",
+            "url": "http://localhost:3000/api/publicaciones",
+            "method": "POST",
+            "sortNum": 230000,
+            "created": "2026-10-22T11:31:15.938Z",
+            "modified": "2026-10-22T11:31:15.938Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"codigo\": \"SEM-CAM-0001\",",
+                    "  \"titulo\": \"Cámara repetida\",",
+                    "  \"descripcion\": \"Esta es una publicación de prueba con una descripción suficientemente larga para cumplir la validación.\",",
+                    "  \"categoria\": \"foto-video\",",
+                    "  \"precioPorDia\": 10000",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "650e9f2b-56fb-44f0-b9a4-0eddf24960d5",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Registrar usuario",
+            "url": "http://localhost:3000/api/auth/registro",
+            "method": "POST",
+            "sortNum": 250000,
+            "created": "2026-11-12T10:10:32.721Z",
+            "modified": "2026-11-12T10:10:32.721Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"nombre\": \"Prueba Thunder\",",
+                    "  \"email\": \"prueba.thunder.2026@gatherly.test\",",
+                    "  \"clave\": \"{{CLAVE_PRUEBA}}\"",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "efc1bcdf-f880-4303-8cc0-8e4cdd4a4345",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Iniciar sesion",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 260000,
+            "created": "2026-11-12T10:17:00.401Z",
+            "modified": "2026-11-12T10:17:00.401Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"email\": \"prueba.thunder.2026@gatherly.test\",",
+                    "  \"clave\": \"{{CLAVE_PRUEBA}}\"",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "180bfd4e-8a63-4a3c-b8be-8151f48ceb5f",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "Iniciar sesion admin",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 265000,
+            "created": "2026-11-12T10:44:29.999Z",
+            "modified": "2026-11-12T10:44:29.999Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"email\": \"admin.semilla@gatherly.test\",",
+                    "  \"clave\": \"{{CLAVE_ADMIN}}\"",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "789f98f8-9b6b-4461-9d7a-c17188ea6b3c",
+            "colId": "bb9db59a-dec4-4a54-9f18-139895a74e48",
+            "containerId": "",
+            "name": "ERROR 403 - usuario comun",
+            "url": "http://localhost:3000/api/publicaciones/000000000000000000000000",
+            "method": "DELETE",
+            "sortNum": 270000,
+            "created": "2026-11-12T10:20:49.303Z",
+            "modified": "2026-11-12T10:20:49.303Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{TOKEN_USUARIO}}"
+            }
+        }
+    ],
+    "ref": "EMmahB3aCihN854u0iuSCaZ9ggUMKHPWTkbTXdlKXOlcaJUnc6DduefmzOskJgrJqGh6h_qJw2YidFmAm2M7vQ"
+}

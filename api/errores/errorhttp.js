@@ -10,6 +10,10 @@ export class ErrorHttp extends Error {
         return new ErrorHttp(401, mensaje);
     }
 
+    static prohibido(mensaje = 'Prohibido') {
+        return new ErrorHttp(403, mensaje);
+    }
+
     static noEncontrado(mensaje = "Recurso no encontrado", detalle) {
     return new ErrorHttp(404, mensaje, detalle);
 }
