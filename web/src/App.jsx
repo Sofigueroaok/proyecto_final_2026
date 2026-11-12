@@ -91,6 +91,10 @@ function App() {
         Inicio
       </button>
 
+      <button onClick={() => setPagina('login')}>
+        Login
+      </button>
+
       <button onClick={() => setPagina('publicaciones')}>
         Publicaciones
       </button>
@@ -104,6 +108,57 @@ function App() {
       {pagina === 'inicio' && (
         <Seccion titulo="Bienvenidos a Gatherly">
           <p>Alquilá lo que necesitás, compartí lo que no usás.</p>
+        </Seccion>
+      )}
+
+      {/* si pagina 'login' se muestra la seccion de inicio de sesion */}
+      {pagina === 'login' && (
+        <Seccion titulo="Iniciar sesión">
+          <p>Ingresa a tu cuenta para continuar.</p>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <label>
+              Email
+              <input type="email" />
+            </label>
+
+            <label>
+              Contraseña
+              <input type="password" />
+            </label>
+
+            <button type="submit">
+              Ingresar
+            </button>
+          </form>
+
+          <button onClick={() => setPagina('registro')}> Registrarme</button>
+        </Seccion>
+      )}
+
+      {/* si pagina 'registro' se muestra la bienvenida */}
+      {pagina === 'registro' && (
+        <Seccion titulo="Crear cuenta">
+          <p>Registrate para empezar a usar Gatherly.</p>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <label>
+              Nombre
+              <input type="text" />
+            </label>
+
+            <label>
+              Email
+              <input type="email" />
+            </label>
+
+            <label>
+              Contraseña
+              <input type="password" />
+            </label>
+
+            <button type="submit" onClick={() => setPagina('inicio')}>
+              Registrarme
+            </button>
+          </form>
         </Seccion>
       )}
 
